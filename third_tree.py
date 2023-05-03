@@ -31,7 +31,6 @@ def get_third(root_tree, name, se):
         return get_third(root_tree.right, name, se)
     return None
 
-
 def printing(node):
     if node is not None:
         printing(node.left)
