@@ -1,0 +1,40 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center " >
+                    <h1>Cycle Ticket</h1>
+                    <h2>Choose Cycle Ticket</h2>
+                </div>
+                {% if username %}
+                <form action="/ticket_order" method="post" class="mt-5">
+                    <div class="container">
+                        <div class="row">
+                            {% for t_id in tickets %}
+                                <div class="col-3">
+                                    <div class="form-check">
+                                        {% if t_id in selected_ticket %}
+                                        <div class="bg-success p-1 border rounded-4" style="width: 100px">
+                                            <input class="form-check-input" type="checkbox" value={{t_id}} name="ticket[]" id="check" disabled>
+                                            <label class="form-check-label" for="check">Ticket - {{t_id}}</label>
+                                        </div>
+                                        {% else %}
+                                        <div class="bg-warning p-1 border rounded-4" style="width: 100px">
+                                            <input class="form-check-input" type="checkbox" value={{t_id}} name="ticket[]" id="check" >
+                                            <label class="form-check-label" for="check">Ticket - {{t_id}}</label>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <button type="submit" class="btn btn-primary mt-1 mb-2" onclick="disable" >Order</button>
+                        </div>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div> 
+        
+          
+{% endblock %}
+    
